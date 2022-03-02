@@ -96,13 +96,6 @@
 	};
 </script>
 
-<style>
-.nav-pills .nav-link.active{
-	color: #262626;
-	background-color: #FFA900;
-}
+<style lang="sass" scoped>
 
-.form-outline .form-control:focus~.form-label {
-    color: #FFA900;
-}
 </style>
