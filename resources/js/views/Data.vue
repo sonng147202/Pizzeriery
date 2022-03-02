@@ -2,8 +2,8 @@
     <div>
         <ul v-if="posts && posts.length">
             <li v-for="post of posts" :key="post.id">
-                <p><strong>{{post.id}}</strong></p>
-                <p>{{post.name}}</p>
+                <h1><strong>{{post.id}}</strong></h1>
+                <h3>{{post.name}}</h3>
             </li>
         </ul>
     </div>

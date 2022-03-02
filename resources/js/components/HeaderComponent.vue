@@ -29,39 +29,24 @@
 			<nav>
 				<ul class="menu-links">
 					<li>
-						<a href="###">Québec, QC</a>
-						<span id="QC-info">
-							<p>+1 418-640-3300</p>
-						</span>
+						<router-link tag="a" to="/">
+							<h3>Home</h3>
+						</router-link>
 					</li>
 					<li>
-						<a href="###">déjeuner</a>
-					</li>
-					<li>
-						<a href="###">boulangerie</a>
-					</li>
-					<li>
-						<a href="###">boissons</a>
-					</li>
-				</ul>
-				<ul class="menu-links">
-					<li>
-						<a href="###">Washington, DC</a>
-						<span id="DC-info">
-						<p>+1 202-472-3850</p>
-						</span>
-					</li>
-
-					<li>
-						<a href="###">breakfast</a>
+						<router-link tag="a" to="/data">
+							<h3>Data</h3>
+						</router-link>
 					</li>
 					<li>
 						<a href="###">
-						bakery            
+							<h3>###</h3>
 						</a>
 					</li>
 					<li>
-						<a href="###">bar</a>
+						<a href="###">
+							<h3>###</h3>
+						</a>
 					</li>
 				</ul>
 			</nav>

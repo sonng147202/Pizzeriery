@@ -93,7 +93,7 @@ div.menu-pane {
 }
 
 .menu-pane p {
-  color: black;
+  color: #fff;
   font-size: 0.6em;
 }
 
@@ -120,59 +120,14 @@ div.menu-pane {
     font-size: 1em;
 }
 
-
-.menu-pane li:first-child {
-  font-size: 1.3em;
-  margin-left: -10px;
-}
-
-
 .menu-links li a {
   color: #000;
   text-decoration: none;
 }
 
-
 .menu-links li:hover a {
-  color: #FFAB91;
+  color: #000;
 }
-
-.menu-links li:first-child:hover a {
-  color: black;  
-  background-color: #FFAB91;
-}
-
-#QC-info {
-  background-color: #FFAB91;
-    border: 2px solid;
-  border-color: #FFAB91;
-display: block;
-  opacity: 0;
-  
-}
-
-.menu-links li:first-child:hover #QC-info {
-opacity: 1;
-}
-
-.menu-links li:first-child:hover #DC-info {
-opacity: 1;
-}
-
-#DC-info {
-  background-color: #FFAB91;
-    border: 2px solid;
-  border-color: #FFAB91;
-display: block;
-  opacity: 0;
-}
-
-
-.menu-links li:first-child a {
-  padding: 5px;
-}
-
-
 
 input.hamburger-checkbox {
   position: absolute;
