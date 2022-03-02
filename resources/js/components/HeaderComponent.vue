@@ -13,7 +13,7 @@
 
 		<ul class="menu-mini">
 			<li class="mm-sub btn-auth">
-				<button @click="editToggleAuth" class="mm-link btn rounded-pill bg-dark text-white me-3">
+				<button @click="changeToggleAuth" class="mm-link btn rounded-pill bg-dark text-white me-3">
 					Login & SignUp
 				</button>
 			</li>
@@ -75,13 +75,14 @@
 	import 'boxicons';
 
 export default {
-	props: {
-		toggleAuth: Boolean
-	},
+	// computed: {
+	// 	toggleAuth(){
+	// 		return this.$store.state.isToggleAuth
+	// 	}
+	// },
 	methods: {
-		editToggleAuth() {
-			this.toggleAuth = !this.toggleAuth;
-			this.$emit('toggleAuthWasEdit', this.toggleAuth);
+		changeToggleAuth() {
+			this.$store.state.isToggleAuth = !this.$store.state.isToggleAuth;
 		}
 	}
 }

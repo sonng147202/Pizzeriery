@@ -6,6 +6,8 @@ import { routes } from './routes/index'
 
 import App from './App.vue';
 
+import store from './store/index';
+
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -14,5 +16,6 @@ const router = new VueRouter({
 
 new Vue({
     render: h => h(App),
-    router
+    router,
+    store
 }).$mount('#root')

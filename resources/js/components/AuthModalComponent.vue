@@ -1,6 +1,6 @@
 <template>
 	<div class="auth-modal">
-		<input id="modal-toggle" type="checkbox" :checked="toggleAuth">
+		<input @change="changeToggleAuth" ref="modalToggle" id="modal-toggle" type="checkbox" :checked="toggleAuth">
 		<label class="modal-backdrop" for="modal-toggle"></label>
 		<div class="modal-content">
 		<label class="modal-close-btn" for="modal-toggle">
@@ -58,9 +58,16 @@
 <script>
 import '../../css/auth.css';
 export default {
-	props: {
-		toggleAuth: Boolean
+	computed: {
+		toggleAuth(){
+			return this.$store.state.isToggleAuth
+		}
 	},
+	methods: {
+		changeToggleAuth() {
+			this.$store.state.isToggleAuth = this.$refs.modalToggle.checked;
+		}
+	}
 };
 </script>
 

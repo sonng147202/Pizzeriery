@@ -1,38 +1,28 @@
 <template>
-    <div id="main">
-        <Header 
-        :toggleAuth="isToggleAuth"
-        @toggleAuthWasEdit="isToggleAuth = $event"
-        />
-        <div class="body-text">
-			<h1>Code Pen Challenge</h1>
-			<h2>January 2019</h2>
-			<p>Made with love (and pure CSS)</p>
-		</div>
-        <Auth
-        :toggleAuth="isToggleAuth"
-        />
-    </div>
+	<div id="main">
+		<Header />
+		<div class="body-text">
+            
+        </div>
+		<Slider />
+		<Auth />
+	</div>
 </template>
 
 <script>
-    import '../../css/app.css';
-    import Header from '../components/HeaderComponent.vue';
-    import Auth from '../components/AuthModalComponent.vue';
+import "../../css/app.css";
+import Header from "../components/HeaderComponent.vue";
+import Auth from "../components/AuthModalComponent.vue";
+import Slider from "../components/SliderComponent.vue";
 
-    export default {
-        data: () => {
-            return {
-                isToggleAuth: false
-            }
-        },
-        components: {
-            Header,
-            Auth
-        }
-    };
+export default {
+	components: {
+		Header,
+		Auth,
+		Slider,
+	},
+};
 </script>
 
 <style>
-
 </style>
