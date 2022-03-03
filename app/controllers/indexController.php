@@ -1,7 +1,6 @@
 <?php 
-namespace App\Controllers;
 
-use App\Models\IndexModel;
+Model('index');
 
 class IndexController
 {
@@ -10,18 +9,9 @@ class IndexController
         view('index');
     }
 
-    public function getData()
+    public function get_products()
     {
-        $data = [
-            [
-                'id' => '001',
-                'name' => 'Sơn Nguyễn'
-            ],
-            [
-                'id' => '002',
-                'name' => 'Sơn Nguyễn'
-            ]
-        ];
-        echo json_encode($data);
+        $data_products = IndexModel::get_all_products();
+        echo json_encode($data_products);
     }
 }

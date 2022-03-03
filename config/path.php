@@ -15,3 +15,7 @@ define('PUBLICPATH', APPPATH.DIRECTORY_SEPARATOR.$public_folder);
 //  * resources path
 $resources_folder = 'resources';
 define('RESOURCESPATH', APPPATH.DIRECTORY_SEPARATOR.$resources_folder);
+
+//  * resources path
+$available_folder = 'core/available';
+define('AVAILABLEPATH', APPPATH.DIRECTORY_SEPARATOR.$available_folder);

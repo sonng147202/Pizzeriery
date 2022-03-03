@@ -1,30 +1,33 @@
 <?php
 
-// namespace Core\Available;
-
 class DB
 {
-    private $conn;
+    private static $conn;
     
-    function __construct()
+    // Kết nối cơ sở dữ liệu
+    public static function connection()
     {
-        $this->connection(func_get_args());
+        $db = func_get_args();
+
+        self::$conn = new mysqli($db[0], $db[1], $db[2], $db[3]);
+    }
+    
+    public static function test()
+    {
+        print_r('lô');
     }
 
-    public function connection($db)
-    {
-        $this->conn = new mysqli($db[0], $db[1], $db[2], $db[3]);
-    }
-
+    // Thực hiện truy vấn SQL
     public static function query($query_string) 
     {
-        $result = mysqli_query($this->conn, $query_string);
+        $result = mysqli_query(self::$conn, $query_string);
         if (!$result) {
             $this->sql_error('Query Error', $query_string);
         }
         return $result;
     }
 
+    // Lấy 1 dòng dữ liệu
     public static function fetch_row($query_string) {
         $result = [];
         $mysqli_result = self::query($query_string);
@@ -33,6 +36,7 @@ class DB
         return $result;
     }
 
+    // Lấy 1 mảng dữ liệu
     public static function fetch_array($query_string) {
         $result = [];
         $mysqli_result = self::query($query_string);
@@ -43,6 +47,7 @@ class DB
         return $result;
     }
 
+    // Chèn dữ liệu vào DB
     public static function insert($table, $data) 
     {
         $fields = "(" . implode(", ", array_keys($data)) . ")";
@@ -58,9 +63,10 @@ class DB
                 INSERT INTO $table $fields
                 VALUES($values)
             ");
-        return mysqli_insert_id($this->conn);
+        return mysqli_insert_id(self::$conn);
     }
 
+    // Cập nhật dữ liệu trong DB
     public static function update($table, $data, $where) {
         $sql = "";
         foreach ($data as $field => $value) {
@@ -75,26 +81,28 @@ class DB
                 SET $sql
                 WHERE $where
        ");
-        return mysqli_affected_rows($this->conn);
+        return mysqli_affected_rows(self::$conn);
     }
 
+    // Xoá dữ liệu trong DB
     public static function delete($table, $where) {
         $query_string = "DELETE FROM " . $table . " WHERE $where";
         self::query($query_string);
-        return mysqli_affected_rows($this->conn);
+        return mysqli_affected_rows(self::$conn);
     }
 
     public function escape_string($str) 
     {
-        return mysqli_real_escape_string($this->conn, $str);
+        return mysqli_real_escape_string(self::$conn, $str);
     }
 
+    // Log lỗi truy vấn
     public function sql_error($message, $query_string = "") 
     {
         $sqlerror = "<table width='100%' border='1' cellpadding='0' cellspacing='0'>";
         $sqlerror.="<tr><th colspan='2'>{$message}</th></tr>";
         $sqlerror.=($query_string != "") ? "<tr><td nowrap> Query SQL</td><td nowrap>: " . $query_string . "</td></tr>\n" : "";
-        $sqlerror.="<tr><td nowrap> Error Number</td><td nowrap>: " . mysqli_errno($this->conn) . " " . mysqli_error($this->conn) . "</td></tr>\n";
+        $sqlerror.="<tr><td nowrap> Error Number</td><td nowrap>: " . mysqli_errno(self::$conn) . " " . mysqli_error(self::$conn) . "</td></tr>\n";
         $sqlerror.="<tr><td nowrap> Date</td><td nowrap>: " . date("D, F j, Y H:i:s") . "</td></tr>\n";
         $sqlerror.="<tr><td nowrap> IP</td><td>: " . getenv("REMOTE_ADDR") . "</td></tr>\n";
         $sqlerror.="<tr><td nowrap> Browser</td><td nowrap>: " . getenv("HTTP_USER_AGENT") . "</td></tr>\n";

@@ -17,6 +17,12 @@ function load_storage($type, $name)
         require "$path";
 }
 
+function Model($name){
+    $path = APPPATH . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . "{$name}Model.php";
+    if (file_exists($path))
+        require "$path";
+}
+
 function view($name)
 {
     $path = RESOURCESPATH . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . "{$name}.blade.php";

@@ -1,20 +1,16 @@
 <?php
 defined('APPPATH') OR exit('Không được quyền truy cập phần này');
 
-// // BASE
-require COREPATH . DIRECTORY_SEPARATOR . 'base.php';
 
-// // CORE/AVAILABLE
-load_folder(COREPATH . DIRECTORY_SEPARATOR . 'available');
 
 // // CONFIG
-load_folder(CONFIGPATH);
+require CONFIGPATH . DIRECTORY_SEPARATOR . 'database.php';
 
-// // CONTROLLERS
-load_folder(FAPPPATH . DIRECTORY_SEPARATOR . 'controllers');
+require CONFIGPATH . DIRECTORY_SEPARATOR . 'mail.php';
 
-// // MODELS
-load_folder(FAPPPATH . DIRECTORY_SEPARATOR . 'models');
+require CONFIGPATH . DIRECTORY_SEPARATOR . 'path.php';
+
+require CONFIGPATH . DIRECTORY_SEPARATOR . 'autoload.php';
 
 // // AUTOLOAD
 if (is_array($autoload)) {
@@ -27,8 +23,22 @@ if (is_array($autoload)) {
     }
 }
 
+// // CORE/AVAILABLE
+require AVAILABLEPATH . DIRECTORY_SEPARATOR . 'Database.php';
+
+require AVAILABLEPATH . DIRECTORY_SEPARATOR . 'Route.php';
+
+// // CONNECT DB
+DB::connection(HOST, USER, PASSWORD, NAME);
+
 // // START SESSION
 session_start();
+
+// // // MODELS
+// load_folder(FAPPPATH . DIRECTORY_SEPARATOR . 'models');
+
+// // CONTROLLERS
+load_folder(FAPPPATH . DIRECTORY_SEPARATOR . 'controllers');
 
 // // API
 require ROUTESPATH . DIRECTORY_SEPARATOR . 'api.php';

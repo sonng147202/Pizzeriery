@@ -1,5 +1,5 @@
 import Home from '../views/Home.vue'
-import Data from '../views/Data.vue'
+import Products from '../views/Products.vue'
 
 export const routes = [
     { 
@@ -7,7 +7,7 @@ export const routes = [
         component: Home 
     },
     { 
-        path: '/data', 
-        component: Data 
+        path: '/products', 
+        component: Products 
     },
 ]

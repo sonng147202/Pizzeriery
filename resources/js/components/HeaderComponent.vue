@@ -26,30 +26,28 @@
 		</ul>
 
 		<div class="menu-pane">
-			<nav>
-				<ul class="menu-links">
-					<li>
-						<router-link tag="a" to="/">
-							<h3>Home</h3>
-						</router-link>
-					</li>
-					<li>
-						<router-link tag="a" to="/data">
-							<h3>Data</h3>
-						</router-link>
-					</li>
-					<li>
-						<a href="###">
-							<h3>###</h3>
-						</a>
-					</li>
-					<li>
-						<a href="###">
-							<h3>###</h3>
-						</a>
-					</li>
-				</ul>
-			</nav>
+			<ul class="menu-links">
+				<li>
+					<router-link tag="a" to="/">
+						<h3>Home</h3>
+					</router-link>
+				</li>
+				<li>
+					<router-link tag="a" to="/products">
+						<h3>Products</h3>
+					</router-link>
+				</li>
+				<li>
+					<a href="###">
+						<h3>###</h3>
+					</a>
+				</li>
+				<li>
+					<a href="###">
+						<h3>###</h3>
+					</a>
+				</li>
+			</ul>
 		</div>
 		
 	</div>

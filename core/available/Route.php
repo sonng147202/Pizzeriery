@@ -1,6 +1,6 @@
 <?php
 
-namespace Core\Available;
+// namespace Core\Available;
 
 class Route
 {
