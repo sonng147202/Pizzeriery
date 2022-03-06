@@ -34,18 +34,8 @@
 				</li>
 				<li>
 					<router-link tag="a" to="/products">
-						<h3>Products</h3>
+						<h3>Menu</h3>
 					</router-link>
-				</li>
-				<li>
-					<a href="###">
-						<h3>###</h3>
-					</a>
-				</li>
-				<li>
-					<a href="###">
-						<h3>###</h3>
-					</a>
 				</li>
 			</ul>
 		</div>

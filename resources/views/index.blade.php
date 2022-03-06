@@ -13,6 +13,8 @@
     </head>
     <body>
         <div id="root"></div>
+        <!-- Bootstrap Jquery -->
+        <script src="public/bootstrap/js/jquery.slim.min.js"></script>
         <!-- Bootstrap Bundle with Popper -->
         <script src="public/bootstrap/js/bootstrap.bundle.min.js"></script>
         <!-- Bundle.js -->

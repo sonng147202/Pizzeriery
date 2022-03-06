@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Sriracha&display=swap');
+
+.menu {
+    height: 86px;
+}
+.nav-link {
+    color: #ff9c00;
+    padding: 15px 48px;
+    font-size: 21px;
+    font-weight: 400;
+    font-family: "Sriracha", cursive;
+    filter: grayscale(100%);
+}
+.nav-link:hover {
+    color: #c00a27;
+    filter: none;
+    padding: 15px 48px;
+}
+.nav-link:hover .nav-imgs {
+    color: #c00a27;
+    width: 30px;
+    filter: none;
+}
+.nav-imgs {
+    width: 30px;
+}
+.active {
+    filter: none;
+    color: #c00a27 !important;
+    background-color: transparent !important;
+}
+.tab {
+    display: grid;
+    grid-template-columns: 252px 252px 252px 252px;
+    grid-gap: 24px;
+}
+.pizza {
+    width: 253px;
+    height: 368px;
+    border: 1px solid #ccc;
+}
+.pizza:hover {
+    border: 1px solid #c00a27;
+}
+.pizza__logo:hover .pizza__description__product {
+    opacity: 1;
+    visibility: visible;
+}
+.pizza__logo:hover .overlow {
+    opacity: 0.8;
+    visibility: visible;
+}
+.pizza__photo {
+    width: 100%;
+}
+.pizza__option {
+    margin: 0 7px;
+    color: #000;
+    padding: 5px;
+    border-radius: 14px;
+    background-color: #f5f5f5;
+}
+.pizza__name__product {
+    font-size: 25px;
+    font-weight: 400;
+    font-family: "Sriracha", cursive;
+}
+.numbers::-webkit-inner-spin-button, .numbers::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.numbers {
+    text-align: center;
+    width: 32px;
+    height: 19px;
+    font-size: 14px;
+    background: transparent;
+    border: none;
+    outline: none;
+}
+.size__option {
+    background: #fff;
+    width: 53px;
+    margin: 0px 4px;
+    height: 26px;
+    font-size: 13px;
+}
+.sizs {
+    font-size: 13px;
+    padding: 0 3px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.size, .number {
+    font-size: 12px;
+}
+.forms {
+    width: 74px;
+}
+.btn-add {
+    padding: 0;
+    height: 19px;
+    position: absolute;
+    top: 1px;
+    line-height: 5px;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+.btn-aprat {
+    padding: 0;
+    height: 19px;
+    position: absolute;
+    left: 7px;
+    top: 1px;
+    line-height: 5px;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+.pizza__description__product {
+    color: #000;
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: linear 0.5s;
+}
+.pizza__name {
+    color: #c00a27;
+}
+.overlow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    height: 273px;
+    opacity: 0;
+    visibility: hidden;
+    transition: linear 0.5s;
+}
+.link__buying {
+    font-size: 12px;
+    padding: 3px 26px;
+    border-radius: 13px;
+    color: #fff;
+    background: #c00a27;
+}
+.link__buying:hover {
+    color: #fff;
+    text-decoration: none;
+    opacity: 1;
+}

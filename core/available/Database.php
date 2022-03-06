@@ -47,6 +47,12 @@ class DB
         return $result;
     }
 
+    //Lấy số bản ghi
+    public static function db_num_rows($query_string) {
+        $mysqli_result = self::query($query_string);
+        return mysqli_num_rows($mysqli_result);
+    }
+
     // Chèn dữ liệu vào DB
     public static function insert($table, $data) 
     {

@@ -1,8 +1,6 @@
 <?php
 defined('APPPATH') OR exit('Không được quyền truy cập phần này');
 
-
-
 // // CONFIG
 require CONFIGPATH . DIRECTORY_SEPARATOR . 'database.php';
 
@@ -33,9 +31,6 @@ DB::connection(HOST, USER, PASSWORD, NAME);
 
 // // START SESSION
 session_start();
-
-// // // MODELS
-// load_folder(FAPPPATH . DIRECTORY_SEPARATOR . 'models');
 
 // // CONTROLLERS
 load_folder(FAPPPATH . DIRECTORY_SEPARATOR . 'controllers');
