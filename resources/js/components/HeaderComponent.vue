@@ -13,9 +13,16 @@
 
 		<ul class="menu-mini">
 			<li class="mm-sub btn-auth">
-				<button @click="changeToggleAuth" class="mm-link btn rounded-pill bg-dark text-white me-3">
-					Login & SignUp
-				</button>
+				<div v-if="tokenUser !== null">
+					<button type="button" class="mm-link btn rounded-pill bg-dark text-white me-3">
+						Name User
+					</button>
+				</div>
+				<div v-else>
+					<button @click="changeToggleAuth" class="mm-link btn rounded-pill bg-dark text-white me-3">
+						Login & SignUp
+					</button>
+				</div>
 			</li>
 			<li class="mm-sub">
 				<a href="#" class="mm-link cart-icon">
@@ -48,11 +55,11 @@
 	import 'boxicons';
 
 export default {
-	// computed: {
-	// 	toggleAuth(){
-	// 		return this.$store.state.isToggleAuth
-	// 	}
-	// },
+	computed: {
+		tokenUser() {
+            return this.$store.state.token
+        }
+	},
 	methods: {
 		changeToggleAuth() {
 			this.$store.state.isToggleAuth = !this.$store.state.isToggleAuth;

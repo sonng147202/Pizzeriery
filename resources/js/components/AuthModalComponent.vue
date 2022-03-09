@@ -22,7 +22,7 @@
                 <form name="formLogin">
                     <input type="email" name="txtEmail" placeholder="Email" required>
                     <input type="password" name="txtPassword" placeholder="Password" required>
-                    <input type="submit" @click.prevent="loginHandler" value="Log In">
+                    <input type="submit" @click.prevent="loginHandler($store.state, $cookies)" value="Log In">
                 </form>
                 <!-- <form class="forgot-password" action="">
                     <input id="forgot-password-toggle" type="checkbox">
@@ -58,47 +58,41 @@
 import '../../css/auth.css';
 import axios from 'axios';
 export default {
+    created: () => {
+        
+    },
     computed: {
         toggleAuth() {
             return this.$store.state.isToggleAuth
-        }
+        },
     },
     methods: {
         changeToggleAuth() {
             this.$store.state.isToggleAuth = this.$refs.modalToggle.checked;
-
         },
-		loginHandler:async () => {
-			console.log('đc r đi thôi');
-			console.log();
-
+		loginHandler: async (state, cookies) => {
 			const loginFormData = new FormData(formLogin);
-	
-			// const email = this.$refs.formLogin.txtEmail.value;
-			// const password = this.$refs.formLogin.txtPassword.value;
+            console.log();
 			try {
-				// make axios post request
 				const response = await axios({
 					method: "post",
 					url: "/auth/login_user",
 					data: loginFormData,
 					headers: { "Content-Type": "multipart/form-data" },
 				});
-				console.log(response);
+
+                const token = response.data.token;
+
+                cookies.set('token', token);
+                
+                state.token = token;
 			} catch(error) {
 				console.log(error)
 			}
-			// axios.post('/auth/login_user')
-			// .then(function (response) {
-			// 	console.log(response);
-			// })
-			// .catch(function (error) {
-			// 	console.log(error);
-			// });
 		}
     },
 	mounted: () => {
-		console.log(this);
+        
 	}
 };
 </script>
