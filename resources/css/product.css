@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Sriracha&display=swap');
 
-.menu {
-    height: 86px;
-}
 .nav-link {
     color: #ff9c00;
     padding: 15px 48px;
@@ -29,11 +26,7 @@
     color: #c00a27 !important;
     background-color: transparent !important;
 }
-.tab {
-    display: grid;
-    grid-template-columns: 252px 252px 252px 252px;
-    grid-gap: 24px;
-}
+
 .pizza {
     display: flex;
     flex-direction: column;
