@@ -8,6 +8,8 @@
         <title>Document</title>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="public/bootstrap/css/bootstrap.min.css">
+        <!-- Icon CSS -->
+        <link rel="stylesheet" href="public/font/icofont/icofont.min.css">
         <!-- Style.css -->
         <link rel="stylesheet" href="public/css/style.css">
     </head>

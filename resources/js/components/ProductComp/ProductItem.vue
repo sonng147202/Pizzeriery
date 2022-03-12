@@ -1,6 +1,6 @@
 <template>
-<div class="pizza">
-    <div class="pizza__img position-relative">
+<div class="pizza position-relative">
+    <div class="pizza__img">
         <div class="pizza__logo">
             <img :src="imgProduct" class="pizza__photo" alt="" />
             <div class="pizza__description__product p-1">

@@ -35,8 +35,10 @@
     grid-gap: 24px;
 }
 .pizza {
-    width: 253px;
-    height: 368px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     border: 1px solid #ccc;
 }
 .pizza:hover {
@@ -137,7 +139,6 @@
     right: 0;
     bottom: 0;
     background: #fff;
-    height: 273px;
     opacity: 0;
     visibility: hidden;
     transition: linear 0.5s;

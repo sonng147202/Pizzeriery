@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "axios": "^0.26.0",
-    "boxicons": "^2.1.1",
+    "boxicons": "^2.1.2",
     "swiper": "^8.0.7",
     "swiper-vue2": "^1.0.6",
     "vue": "^2.6.14",

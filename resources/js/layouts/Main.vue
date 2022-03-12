@@ -1,32 +1,49 @@
 <template>
-	<div id="main">
-		<Header />
-		<div class="body-text">
-			<h1>{{this.$store.state.token}}</h1>
-            <router-view></router-view>
-        </div>
-		<div v-if="!this.$store.state.token">
-			<Auth />
-		</div>
-	</div>
+<!--wrapper start-->
+<div class="wrapper" :class="{ 'slip': isToggleSidebar }">
+    <Header/>
+    <Slider/>
+    <!--main container start-->
+    <div class="main-container">
+        <router-view></router-view>
+    </div>
+    <!--main container end-->
+
+    <!-- auth start -->
+    <div v-if="!this.$store.state.token">
+        <Auth />
+    </div>
+    <!-- auth end -->
+</div>
+<!--wrapper end-->
 </template>
 
 <script>
-import "../../css/app.css";
 import Header from "../components/HeaderComponent.vue";
+import Slider from "../components/SliderComponent.vue";
 import Auth from "../components/AuthModalComponent.vue";
 
 export default {
-	mounted() {
-		this.$store.state.token = this.$cookies.get('token');
+	computed: {
+		isToggleSidebar() {
+			return this.$store.state.isToggleSidebar;
+		}
 	},
-	beforeUpdate() {
-        console.log(this.$store.state.token);
+	data() {
+		return {
+		}
+	},
+    mounted() {
+        this.$store.state.token = this.$cookies.get('token');
     },
-	components: {
-		Header,
-		Auth,
-	},
+    beforeUpdate() {
+        this.$store.state.token;
+    },
+    components: {
+        Header,
+		Slider,
+        Auth,
+    },
 };
 </script>
 
