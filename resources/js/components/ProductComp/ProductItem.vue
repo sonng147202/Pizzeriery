@@ -35,7 +35,7 @@
             <form>
                 <div class="pizza__option mb-2">
                     <div class="d-flex flex-wrap justify-content-between align-items-center">
-                        <ChooseSize  v-if="extraProduct" />
+                        <ChooseSize  v-if="extraProduct" :priceScale="dataPriceScale" />
                         <QuantityOrder />
                     </div>
                 </div>
@@ -48,16 +48,32 @@
 </template>
 
 <script>
+import axios from 'axios';
 import Notify from 'simple-notify'
 import ChooseSize from './ChooseSize.vue';
 import QuantityOrder from './QuantityOrder.vue';
 
 export default {
+    created() {
+        axios.get(`/get_price_scale?id=${this.idProduct}`)
+        .then(response => {
+            this.dataPriceScale = response.data;
+        })
+        .catch(e => {
+            console.error(e);
+        })
+    },
     components: {
         ChooseSize,
         QuantityOrder,
     },
+    data() {
+        return {
+            dataPriceScale: [],
+        }
+    },
     props: {
+        idProduct: Number,
         imgProduct: String,
         nameProduct: String,
         priceProduct: String,

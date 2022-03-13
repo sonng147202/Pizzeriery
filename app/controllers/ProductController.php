@@ -12,4 +12,12 @@ class ProductController
         }
         echo json_encode($data);
     }
+
+    public function get_price_scale($get)
+    {
+        $data = ProductModel::fetch_price_scale($get['id']);
+        if (!empty($data)) {
+            echo json_encode($data);
+        }
+    }
 }

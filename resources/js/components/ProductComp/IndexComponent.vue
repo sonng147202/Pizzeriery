@@ -36,10 +36,10 @@
             :aria-labelledby="'cat' + index + '-tab'"
         >
             <div class="tab row align-items-stretch">
-
                 <ProductItem 
                     v-for="product in cat_products" 
                     :key="product.prodc_id" 
+                    :idProduct="parseInt(product.prodc_id)"
                     :imgProduct="product.prodc_img" 
                     :nameProduct="product.prodc_title" 
                     :extraProduct="parseInt(product.prodc_extra)"
@@ -73,7 +73,6 @@ export default {
             .then(response => {
                 this.dataCats = response.data.cats;
                 this.dataProducts = response.data.products;
-                console.log(this.dataProducts);
             })
             .catch(e => {
                 console.error(e);
