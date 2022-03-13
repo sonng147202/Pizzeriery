@@ -4,8 +4,19 @@
         <!-- tab -->
         <nav class="nav nav-pills justify-content-center w-100">
             <div class="nav nav-tabs" role="tablist">
-                <button type="button" class="nav-link d-flex justify-content-center flex-column" data-bs-toggle="tab" role="tab" aria-selected="true" v-for="(cat, index) in dataCats" :key="cat.cat_id" :class="{ 'active': index == 0 }" :data-bs-target="'#cat' + cat.cat_id" :aria-controls="'cat' + cat.cat_id">
+                <button 
+                    type="button" 
+                    class="nav-link d-flex justify-content-center flex-column" 
+                    data-bs-toggle="tab" role="tab" aria-selected="true" 
+                    v-for="(cat, index) in dataCats" 
+                    :key="cat.cat_id" 
+                    :class="{ 'active': index == 0 }" 
+                    :data-bs-target="'#cat' + cat.cat_id" 
+                    :aria-controls="'cat' + cat.cat_id"
+                >
+                    <!-- icon tab -->
                     <img :src="cat.cat_img" class="nav-imgs m-0 m-auto" alt="" />
+                    <!-- name tab -->
                     <span class="name">
                         {{ cat.cat_name }}
                     </span>
@@ -13,19 +24,28 @@
             </div>
         </nav>
     </div>
-    <!-- Nội dung -->
+    <!-- tab content -->
     <div class="tab-content">
-        <div class="tab-pane fade container pt-5" v-for="(cat_products, index) in dataProducts" :key="index" :class="{ 'show active': index == 1 }" :id="'cat' + index" role="tabpanel" :aria-labelledby="'cat' + index + '-tab'">
+        <!-- tab pane -->
+        <div 
+            class="tab-pane fade container pt-4" 
+            v-for="(cat_products, index) in dataProducts" 
+            :key="index" 
+            :class="{ 'show active': index == 1 }" 
+            :id="'cat' + index" role="tabpanel" 
+            :aria-labelledby="'cat' + index + '-tab'"
+        >
             <div class="tab row align-items-stretch">
-                <ProductItem v-for="product in cat_products" :key="product.prodc_id" :imgProduct="product.prodc_img" :nameProduct="product.prodc_title" />
+
+                <ProductItem 
+                    v-for="product in cat_products" 
+                    :key="product.prodc_id" 
+                    :imgProduct="product.prodc_img" 
+                    :nameProduct="product.prodc_title" 
+                    :extraProduct="parseInt(product.prodc_extra)"
+                />
             </div>
         </div>
-        <!-- <div class="tab-pane container active pt-5" id="tab1">
-                <div class="tab">
-                    <ProductItem imgProduct="" nameProduct="" />
-                </div>
-            </div> -->
-
     </div>
 </div>
 </template>

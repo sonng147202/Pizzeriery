@@ -19,6 +19,15 @@
 </template>
 
 <script>
+// Bootstrap
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/css/bootstrap-grid.min.css"
+import "bootstrap/dist/js/bootstrap.bundle.min.js"
+// CSS all
+import '../css/index';
+// Simple Notify
+import 'simple-notify/dist/simple-notify.min.css'
+
 import Header from "../components/HeaderComponent.vue";
 import Slider from "../components/SliderComponent.vue";
 import Auth from "../components/AuthModalComponent.vue";

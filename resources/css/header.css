@@ -1,6 +1,6 @@
 .wrapper .header{
   z-index: 1;
-  background: #f39c12;
+  background: #c00a27;
   position: fixed;
   width: calc(100% - 0%);
   height: 70px;
@@ -112,7 +112,7 @@
 }
 
 .wrapper .sidebar .sidebar-menu .item .menu-btn:hover{
-  color: #f39c12;
+  color: #c00a27;
 }
 
 .wrapper .sidebar .sidebar-menu .item .menu-btn i{
@@ -126,7 +126,7 @@
 }
 
 .wrapper .sidebar .sidebar-menu .item .sub-menu{
-  background: #f39c12;
+  background: #c00a27;
   overflow: hidden;
   max-height: 0;
   transition: 0.3s;

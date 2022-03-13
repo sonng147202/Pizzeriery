@@ -72,7 +72,6 @@ export default {
         },
 		loginHandler: async (state, cookies) => {
 			const loginFormData = new FormData(formLogin);
-            console.log();
 			try {
 				const response = await axios({
 					method: "post",
@@ -87,7 +86,7 @@ export default {
                 
                 state.token = token;
 			} catch(error) {
-				console.log(error)
+				console.error(error)
 			}
 		}
     },
