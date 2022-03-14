@@ -1,5 +1,5 @@
 <template>
-<div class="col-lg-3 col-sm-6 mb-3">
+<div class="col-lg-3 col-sm-6 mb-4">
     <div class="pizza">
         <div class="pizza__img position-relative">
             <div class="pizza__logo">
@@ -32,14 +32,15 @@
                     <span class="price">120.000</span>
                 </div>
             </div>
-            <form>
+            <form ref="orderForm">
                 <div class="pizza__option mb-2">
                     <div class="d-flex flex-wrap justify-content-between align-items-center">
+                        <input type="hidden" name="name_product" :value="nameProduct">
                         <ChooseSize  v-if="extraProduct" :priceScale="dataPriceScale" />
                         <QuantityOrder />
                     </div>
                 </div>
-                <button class="pizza__btn-submit p-2 mb-2" type="submit" @click.prevent="submitOrder">Mua hàng</button>
+                <button class="pizza__btn-submit p-2 mb-2" type="submit" @click.prevent="submitOrder($event, $refs.orderForm)">Mua hàng</button>
             </form>
 
         </div>
@@ -80,22 +81,29 @@ export default {
         extraProduct: Number,
     },
     methods: {
-        submitOrder() {
-            console.log('đc');
-            new Notify({
-                status: 'success',
-                title: 'Notify Title',
-                text: 'Notify text lorem ipsum',
-                effect: 'fade',
-                speed: 300,
-                showCloseButton: true,
-                autoclose: true,
-                autotimeout: 3000,
-                gap: 20,
-                distance: 20,
-                type: 1,
-                position: 'right top'
-            })
+        submitOrder: async (event, orderForm) => {
+            const orderFormData = new FormData(orderForm);
+
+            try {
+				const response = await axios({
+					method: "post",
+					url: "/order_product",
+					data: orderFormData,
+					headers: { "Content-Type": "multipart/form-data" },
+				});
+
+                console.log(event);
+
+                new Notify({
+                    status: 'success',
+                    title: 'Add to cart',
+                    text: `${response.data.name_product}`,
+                    autoclose: true,
+                })
+			} catch(error) {
+				console.error(error)
+			}
+            
         }
     }
 }

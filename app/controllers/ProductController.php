@@ -20,4 +20,9 @@ class ProductController
             echo json_encode($data);
         }
     }
+    
+    public function order_product($post)
+    {
+        echo json_encode($post);
+    }
 }
