@@ -1,24 +1,20 @@
 <template>
-<!--wrapper start-->
-<div class="wrapper" :class="{ 'slip': isToggleSidebar }">
+<div>
     <Header/>
-    <Slider/>
-    <!--main container start-->
-    <div class="main-container">
-        <router-view></router-view>
-    </div>
-    <!--main container end-->
 
-    <!-- auth start -->
+    <div class="body-text container">
+        <router-view></router-view>
+	</div>
+
     <div v-if="!this.$store.state.token">
         <Auth />
     </div>
-    <!-- auth end -->
 </div>
-<!--wrapper end-->
 </template>
 
 <script>
+// ICON
+import 'boxicons/css/boxicons.min.css'
 // Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/css/bootstrap-grid.min.css"
