@@ -1,5 +1,6 @@
 import Home from '../views/Home.vue'
 import Products from '../views/Products.vue'
+import Cart from '../views/Cart.vue'
 
 export const routes = [
     { 
@@ -9,5 +10,9 @@ export const routes = [
     { 
         path: '/products', 
         component: Products 
+    },
+    { 
+        path: '/cart', 
+        component: Cart 
     },
 ]

@@ -23,9 +23,17 @@ function Model($name){
         require "$path";
 }
 
-function view($name)
-{
-    $path = RESOURCESPATH . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . "{$name}.blade.php";
+function Controller($name){
+    $path = APPPATH . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . "{$name}Controller.php";
     if (file_exists($path))
         require "$path";
+}
+
+function asset($name, $type = 0){
+    $source = '/public/';
+    if ($type) {
+        $source =  $_SERVER['HTTP_HOST'] . '/public/';
+    }
+    $path = $source . $name;
+    return "$path";
 }

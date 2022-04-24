@@ -1,6 +1,7 @@
 <?php 
 
 Model('index');
+use Lcobucci\JWT\Signer\Key\InMemory;
 
 class IndexController
 {
@@ -8,6 +9,10 @@ class IndexController
     {
         view('index');
     }
-
     
+    public function get_token()
+    {
+        $key = InMemory::plainText('my-key-as-plaintext');
+        echo $key;
+    }
 }

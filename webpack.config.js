@@ -7,7 +7,7 @@ const { DefinePlugin }= require('webpack');
 module.exports = {
 	entry: "./resources/js/main.js", // Dẫn tới file index.js ta đã tạo
 	output: {
-		path: path.join(__dirname, "/public"), // Thư mục chứa file được build ra
+		path: path.join(__dirname, "/public/dist"), // Thư mục chứa file được build ra
 		filename: "bundle.js" // Tên file được build ra
 	},
 	module: {

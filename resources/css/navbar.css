@@ -2,14 +2,12 @@ nav.navbar {
   position: fixed;
   z-index: 99;
   width: 100%;
-  background: #242526;
+  background: #c00a27;
 }
 nav.navbar .wrapper-nav {
   position: relative;
-  padding: 0px 30px;
   height: 70px;
   line-height: 70px;
-  margin: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -36,7 +34,7 @@ nav.navbar .wrapper-nav {
   transition: all 0.3s ease;
 }
 .nav-links li a:hover {
-  background: #3a3b3c;
+  background: rgba(58, 59, 60, 0.3);
 }
 .nav-links .mobile-item {
   display: none;
@@ -45,11 +43,12 @@ nav.navbar .wrapper-nav {
   position: absolute;
   background: #242526;
   width: 180px;
+  padding: 0;
   line-height: 45px;
   top: 85px;
   opacity: 0;
   visibility: hidden;
-  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 10px rgba(192, 10, 39, 0.15);
 }
 .nav-links li:hover .drop-menu,
 .nav-links li:hover .mega-box {
@@ -86,11 +85,9 @@ nav.navbar .wrapper-nav {
   width: calc(25% - 30px);
   line-height: 45px;
 }
-.content .row img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+/* .content .row img {
+
+} */
 .content .row header {
   color: #f2f2f2;
   font-size: 20px;

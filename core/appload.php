@@ -1,16 +1,13 @@
 <?php
 defined('APPPATH') OR exit('Không được quyền truy cập phần này');
 
-// // CONFIG
-require CONFIGPATH . DIRECTORY_SEPARATOR . 'database.php';
+// BASE
+require APPPATH . DIRECTORY_SEPARATOR . 'core' . DIRECTORY_SEPARATOR . 'base.php';
 
-require CONFIGPATH . DIRECTORY_SEPARATOR . 'mail.php';
+// CONFIG
+load_folder(APPPATH . DIRECTORY_SEPARATOR . 'config');
 
-require CONFIGPATH . DIRECTORY_SEPARATOR . 'path.php';
-
-require CONFIGPATH . DIRECTORY_SEPARATOR . 'autoload.php';
-
-// // AUTOLOAD
+// AUTOLOAD
 if (is_array($autoload)) {
     foreach ($autoload as $type => $list_auto) {
         if (!empty($list_auto)) {
@@ -21,19 +18,11 @@ if (is_array($autoload)) {
     }
 }
 
-// // CORE/AVAILABLE
-require AVAILABLEPATH . DIRECTORY_SEPARATOR . 'Database.php';
-
-require AVAILABLEPATH . DIRECTORY_SEPARATOR . 'Route.php';
-
-// // CONNECT DB
+// CONNECT DB
 DB::connection(HOST, USER, PASSWORD, NAME);
 
-// // START SESSION
-session_start();
+// ROUTER
+require APPPATH . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'router.php';
 
-// // CONTROLLERS
-load_folder(FAPPPATH . DIRECTORY_SEPARATOR . 'controllers');
-
-// // API
-require ROUTESPATH . DIRECTORY_SEPARATOR . 'api.php';
+// SPA APP
+require APPPATH . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'index.php';

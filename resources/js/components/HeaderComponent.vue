@@ -1,14 +1,14 @@
 <template>
 <nav class="navbar">
     <div class="wrapper-nav container">
-        <div class="logo"><router-link tag="a" to="/">CodingNepal</router-link></div>
+        <div class="logo"><router-link tag="a" to="/">Pizzeriery</router-link></div>
         <input type="radio" name="slider" id="menu-btn">
         <input type="radio" name="slider" id="close-btn">
         <ul class="nav-links">
             <label for="close-btn" class="navbar-btn close-btn">
 				<i class='bx bx-x'></i>
 			</label>
-            <li><router-link tag="a" to="/">Home</router-link></li>
+            <li><a @click="changeToggleAuth">Home</a></li>
             <li><router-link tag="a" to="/products">Products</router-link></li>
             <li>
                 <a href="#" class="desktop-item">Dropdown Menu</a>
@@ -28,7 +28,7 @@
                 <div class="mega-box">
                     <div class="content">
                         <div class="row">
-                            <img src="img.jpg" alt="">
+                            <img :src="imgBanner" alt="">
                         </div>
                         <div class="row">
                             <header>Design Services</header>
@@ -60,7 +60,7 @@
                     </div>
                 </div>
             </li>
-            <li><a href="#">Feedback</a></li>
+            <li><router-link tag="a" to="/cart">Cart</router-link></li>
         </ul>
         <label for="menu-btn" class="navbar-btn menu-btn">
 			<i class='bx bx-menu-alt-right'></i>
@@ -70,7 +70,13 @@
 </template>
 
 <script>
+import imgBannerMenu from '../../img/banner-meta-menu.jpg';
 export default {
+    data() {
+        return {
+            imgBanner: imgBannerMenu,
+        }
+    },
     computed: {
         tokenUser() {
             return this.$store.state.token;
