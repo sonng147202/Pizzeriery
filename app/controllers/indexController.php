@@ -13,6 +13,6 @@ class IndexController
     public function get_token()
     {
         $key = InMemory::plainText('my-key-as-plaintext');
-        echo $key;
+        print_r($key);
     }
 }

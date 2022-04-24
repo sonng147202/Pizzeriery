@@ -1,5 +1,10 @@
 <?php
+// Require Controllers
+Controller('Index');
+Controller('Auth');
+Controller('Product');
 
+// Routes
 Route::get('/token', [IndexController::class, 'get_token']);
 
 Route::post('/auth/login_user', [AuthController::class, 'login_user']);

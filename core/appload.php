@@ -1,8 +1,10 @@
 <?php
 defined('APPPATH') OR exit('Không được quyền truy cập phần này');
 
-// BASE
+// BASE FILE
 require APPPATH . DIRECTORY_SEPARATOR . 'core' . DIRECTORY_SEPARATOR . 'base.php';
+
+// *********************__LOAD_FILES__*********************
 
 // CONFIG
 load_folder(APPPATH . DIRECTORY_SEPARATOR . 'config');
@@ -18,8 +20,18 @@ if (is_array($autoload)) {
     }
 }
 
+// *********************__DEFAULT__*********************
+
 // CONNECT DB
 DB::connection(HOST, USER, PASSWORD, NAME);
+
+// START SESSION
+session_start();
+
+// *********************__APP__*********************
+
+// VENDOR
+require APPPATH . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
 
 // ROUTER
 require APPPATH . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'router.php';
