@@ -33,18 +33,7 @@
 	margin: 17px 0 20px 0;
 }
 
-.product .price {
-	background: #fcfcfc;
-	color: #000;
-	float: right;
-	font-size: 15px;
-	font-weight: 300;
-	line-height: 49px;
-	margin: 0;
-	padding: 0 30px;
-}
-
-.product .full-price {
+.product .size {
 	background: #c00a27;
 	color: #fff;
 	float: right;
@@ -53,12 +42,28 @@
 	line-height: 49px;
 	margin: 0;
 	padding: 0 30px;
+}
 
-	-webkit-transition: margin .15s linear;
-	-moz-transition: margin .15s linear;
-	-ms-transition: margin .15s linear;
-	-o-transition: margin .15s linear;
-	transition: margin .15s linear;
+.product .price {
+	background: #fcfcfc;
+	color: #000;
+	float: right;
+	font-size: 22px;
+	font-weight: 300;
+	line-height: 49px;
+	margin: 0;
+	padding: 0 30px;
+}
+
+.product .full-price {
+	background: #bdc3c7;
+	color: #fff;
+	float: right;
+	font-size: 22px;
+	font-weight: 300;
+	line-height: 49px;
+	margin: 0;
+	padding: 0 30px;
 }
 
 .qt, .qt-plus, .qt-minus {
@@ -70,6 +75,8 @@
 	font-size: 19px;
 	line-height: 50px;
 	width: 70px;
+	border: none;
+	outline: none;
 	text-align: center;
 }
 
@@ -79,7 +86,9 @@
 	font-size: 30px;
 	font-weight: 300;
 	height: 100%;
-	padding: 0 20px;
+	width: 100%;
+	text-align: center;
+	user-select: none;
 	-webkit-transition: background .2s linear;
 	-moz-transition: background .2s linear;
 	-ms-transition: background .2s linear;
@@ -101,18 +110,26 @@
 	line-height: 47px;
 }
 
-.type {
+.close {
 	background: #bdc3c7;
-	font-size: 13px;
-	padding: 10px 16px;
+	font-size: 24px;
+	padding: 4px 10px;
     top: 0;
 	left: 100%;
+	cursor: pointer;
+	transition: all 0.3s;
 }
 
-.type, .color {
+.close, .color {
 	border: 1px solid #ccc;
 	border-style: none none solid none;
 	position: absolute;
+}
+
+.close:hover {
+	color: #fff;
+	background-color: #c00a27;
+	transition: all 0.3s;
 }
 
 .color {

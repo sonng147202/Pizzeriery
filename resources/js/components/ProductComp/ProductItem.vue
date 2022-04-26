@@ -92,7 +92,7 @@ export default {
 					headers: { "Content-Type": "multipart/form-data" },
 				});
 
-                console.log(event);
+                console.log(response);
 
                 new Notify({
                     status: 'success',

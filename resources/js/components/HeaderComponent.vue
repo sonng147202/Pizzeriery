@@ -8,7 +8,7 @@
             <label for="close-btn" class="navbar-btn close-btn">
 				<i class='bx bx-x'></i>
 			</label>
-            <li><a @click="changeToggleAuth">Home</a></li>
+            <li><a @click="changeToggleAuth">Login</a></li>
             <li><router-link tag="a" to="/products">Products</router-link></li>
             <li>
                 <a href="#" class="desktop-item">Dropdown Menu</a>
