@@ -29,6 +29,12 @@ function Controller($name){
         require "$path";
 }
 
+function View(){
+    $path = APPPATH . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'index.php';
+    if (file_exists($path))
+        require "$path";
+}
+
 function asset($name, $type = 0){
     $source = '/public/';
     if ($type) {

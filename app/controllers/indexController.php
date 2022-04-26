@@ -7,7 +7,7 @@ class IndexController
 {
     public function index()
     {
-        view('index');
+        View('index');
     }
     
     public function get_token()

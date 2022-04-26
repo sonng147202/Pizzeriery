@@ -15,6 +15,7 @@ Vue.use(VueRouter);
 Vue.use(VueCookies);
 
 const router = new VueRouter({
+    mode: 'history',
     routes 
 })
 
