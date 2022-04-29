@@ -17,7 +17,7 @@ Route::get('/get_products', [ProductController::class, 'get_products']);
 Route::get('/get_price_scale', [ProductController::class, 'get_price_scale']);
 Route::post('/order_product', [ProductController::class, 'order_product']);
 
-Route::get('/testing', function($get) {
+Route::post('/testing', function($post) {
     echo 'testing...';
-    print_r($get);
+    print_r($post);
 });

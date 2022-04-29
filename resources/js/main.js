@@ -10,9 +10,13 @@ import App from './App.vue';
 
 import store from './store/index';
 
+import VueResource from 'vue-resource';
+
 Vue.use(VueRouter);
 
 Vue.use(VueCookies);
+
+Vue.use(VueResource);
 
 const router = new VueRouter({
     // mode: 'history',
