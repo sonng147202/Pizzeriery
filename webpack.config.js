@@ -18,7 +18,7 @@ module.exports = {
 				options: { 
 					loaders: { 
 						js: 'awesome-typescript-loader?silent=true'
-					} 
+					},
 				} 
 			},
 			{
@@ -26,7 +26,7 @@ module.exports = {
 				use: [
 					"style-loader", 
 					"css-loader", 
-				]
+				],
 			},
 			{
 				test: /\.(png|jpe?g|gif)$/i,

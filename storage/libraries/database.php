@@ -22,7 +22,7 @@ class DB
     {
         $result = mysqli_query(self::$conn, $query_string);
         if (!$result) {
-            $this->sql_error('Query Error', $query_string);
+            self::sql_error('Query Error', $query_string);
         }
         return $result;
     }
@@ -62,7 +62,7 @@ class DB
             if ($value === NULL)
                 $values .= "NULL, ";
             else
-                $values .= "'" . $this->escape_string($value) . "', ";
+                $values .= "'" . self::escape_string($value) . "', ";
         }
         $values = substr($values, 0, -2);
         self::query("
@@ -79,7 +79,7 @@ class DB
             if ($value === NULL)
                 $sql .= "$field=NULL, ";
             else
-                $sql .= "$field='" . $this->escape_string($value) . "', ";
+                $sql .= "$field='" . self::escape_string($value) . "', ";
         }
         $sql = substr($sql, 0, -2);
         self::query("

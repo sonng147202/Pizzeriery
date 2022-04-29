@@ -1,16 +1,14 @@
 <template>
 <nav class="navbar">
     <div class="wrapper-nav container">
-        <div class="logo"><router-link tag="a" to="/">Pizzeriery</router-link></div>
+        <div class="logo"><router-link tag="a" :to="{name: 'Home'}">Pizzeriery</router-link></div>
         <input type="radio" name="slider" id="menu-btn">
         <input type="radio" name="slider" id="close-btn">
         <ul class="nav-links">
             <label for="close-btn" class="navbar-btn close-btn">
 				<i class='bx bx-x'></i>
 			</label>
-            <li><a @click="changeToggleAuth">Login</a></li>
-            <li><router-link tag="a" to="/products">Products</router-link></li>
-            <li>
+            <!-- <li>
                 <a href="#" class="desktop-item">Dropdown Menu</a>
                 <input type="checkbox" id="showDrop">
                 <label for="showDrop" class="mobile-item">Dropdown Menu</label>
@@ -59,8 +57,11 @@
                         </div>
                     </div>
                 </div>
-            </li>
-            <li><router-link tag="a" to="/cart">Cart</router-link></li>
+            </li> -->
+            <li><router-link tag="a" :to="{name: 'Products'}">Products</router-link></li>
+            <li><router-link tag="a" :to="{name: 'Cart'}">Cart</router-link></li>
+            <li><router-link tag="a" :to="{name: 'Login'}">Login</router-link></li>
+            <li><router-link tag="a" :to="{name: 'Register'}">Register</router-link></li>
         </ul>
         <label for="menu-btn" class="navbar-btn menu-btn">
 			<i class='bx bx-menu-alt-right'></i>
@@ -78,17 +79,10 @@ export default {
         }
     },
     computed: {
-        tokenUser() {
-            return this.$store.state.token;
-        },
+        
     },
     methods: {
-        changeToggleAuth() {
-            this.$store.state.isToggleAuth = !this.$store.state.isToggleAuth;
-        },
-        toggleSidebar() {
-            this.$store.state.isToggleSidebar = !this.$store.state.isToggleSidebar;
-        }
+        
     }
 }
 </script>
