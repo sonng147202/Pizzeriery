@@ -62,6 +62,7 @@
             <li><router-link tag="a" :to="{name: 'Cart'}">Cart</router-link></li>
             <li><router-link tag="a" :to="{name: 'Login'}">Login</router-link></li>
             <li><router-link tag="a" :to="{name: 'Register'}">Register</router-link></li>
+            <li><a href="#" @click="AUTH_LOGOUT">Logout</a></li>
         </ul>
         <label for="menu-btn" class="navbar-btn menu-btn">
 			<i class='bx bx-menu-alt-right'></i>
@@ -71,6 +72,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import imgBannerMenu from '../../img/banner-meta-menu.jpg';
 export default {
     data() {
@@ -82,7 +84,7 @@ export default {
         
     },
     methods: {
-        
+        ...mapActions(['AUTH_LOGOUT'])
     }
 }
 </script>

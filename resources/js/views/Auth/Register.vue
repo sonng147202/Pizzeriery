@@ -36,13 +36,17 @@ data() {
             data.append('email', this.formData.email);
             data.append('password', this.formData.password);
 
+            const _this = this;
+
             axios.post('/auth/register', data)
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+                .then(function (response) {
+                    if (response.data == 'OK') {
+                        _this.$router.push({ name: 'Login' });
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         }
     }
 }

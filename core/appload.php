@@ -30,8 +30,5 @@ session_start();
 
 // *********************__APP__*********************
 
-// VENDOR
-require APPPATH . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
-
 // ROUTER
 require APPPATH . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR . 'router.php';

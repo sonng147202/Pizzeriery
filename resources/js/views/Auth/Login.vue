@@ -1,14 +1,14 @@
 <template>
-<form>
+<form method="post" @submit.prevent="AUTH_REQUEST(formData)">
     <div class="mb-3">
         <label for="txtEmail" class="form-label">Email address</label>
-        <input type="text" class="form-control" id="txtEmail" v-model="form.email">
+        <input type="text" class="form-control" id="txtEmail" v-model="formData.email">
     </div>
     <div class="mb-3">
         <label for="txtPassword" class="form-label">Password</label>
-        <input type="password" class="form-control" id="txtPassword" v-model="form.password">
+        <input type="password" class="form-control" id="txtPassword" v-model="formData.password">
     </div>
-    <button class="btn btn-danger" @click="AUTH_REQUEST(form)">Submit</button>
+    <button class="btn btn-danger" type="submit">Submit</button>
 </form>
 </template>
 
@@ -17,7 +17,7 @@ import { mapActions } from 'vuex';
 export default {
     data() {
         return {
-            form: {
+            formData: {
                 email: '',
                 password: '',
             }

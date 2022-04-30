@@ -8,11 +8,11 @@ class AuthController
     {
         $email = isset($_POST['email']) ? $_POST['email'] : null;
         $password = isset($_POST['password']) ? md5($_POST['password']) : null;
-        echo $email;
+
         if (UserModel::find_one($email, $password)) {
             $payload = UserModel::get_user($email);
-            $jsonWebToken = JWT::encode($payload, '_key');
-            echo JsonHelper::getJson("user_token", $jsonWebToken);
+            $jsonWebToken = JWT::encode($payload, 'SECRET_KEY');
+            echo JsonHelper::getJson("token", $jsonWebToken);
         }
     }
 
@@ -24,12 +24,21 @@ class AuthController
         
         if (!UserModel::exist_user($email)) {
             if(UserModel::save_user([
-                'user_name' => $username,
-                'user_email' => $email,
-                'user_password' => $password,
+                'username' => $username,
+                'email' => $email,
+                'password' => $password,
             ])) {
                 echo 'OK';
             }
         }
+    }
+
+    public function get_profile()
+    {
+        $headers = apache_request_headers();
+        $token = isset($headers['Authorization']) ? $headers['Authorization'] : null;
+        if ($token)
+            $profile_user = JWT::decode($token, 'SECRET_KEY', true);
+            echo json_encode($profile_user);
     }
 }

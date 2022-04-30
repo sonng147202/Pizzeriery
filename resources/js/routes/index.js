@@ -41,11 +41,13 @@ export const routes = [
     {
         path: "/auth/login",
         component: Login,
-        name: 'Login'
+        name: 'Login',
+        beforeEnter: ifNotAuthenticated,
     },
     {
         path: "/auth/register",
         component: Register,
-        name: 'Register'
+        name: 'Register',
+        beforeEnter: ifNotAuthenticated,
     },
 ];

@@ -1,10 +1,14 @@
+import VueRouter from "vue-router";
 import axios from "axios";
+
 import {
 	AUTH_REQUEST,
 	AUTH_ERROR,
 	AUTH_SUCCESS,
 	AUTH_LOGOUT
 } from "../actions/auth";
+
+import { USER_REQUEST } from "../actions/user";
 
 const state = {
 	token: localStorage.getItem("user-token") || "",
@@ -17,42 +21,52 @@ const getters = {
 };
 
 const actions = {
-	[AUTH_REQUEST]: ({ commit }, user) => {
-		// Dùng promise để sau khi login thành công
-		// chúng ta có thể redirect user đi đến trang khác
+	[AUTH_REQUEST]: ({ commit, dispatch }, formData) => {
+
+		const data = new FormData();
+		data.append('email', formData.email);
+		data.append('password', formData.password);
+
 		return new Promise((resolve, reject) => {
 			commit(AUTH_REQUEST);
-			axios({ 
-				url: "/auth/login", 
-				data: user, 
-				method: "POST" 
+			axios({
+				url: "/auth/login",
+				data: data,
+				method: "POST"
 			})
 				.then((resp) => {
-					console.log(resp);
-					// const token = resp.data.token;
-					// localStorage.setItem("user-token", token);
-					// // thêm header authorization:
-					// axios.defaults.headers.common["Authorization"] = token;
-					// commit(AUTH_SUCCESS, resp);
-					// dispatch(USER_REQUEST);
-					// resolve(resp);
+					console.log(resp, 'login');
+					const token = resp.data.token;
+
+					localStorage.setItem("user-token", token);
+
+					axios.defaults.headers.common["Authorization"] = token;
+
+					commit(AUTH_SUCCESS, resp);
+
+					dispatch(USER_REQUEST);
+
+					VueRouter.push({ name: 'Home' });
+
+					resolve(resp);
 				})
 				.catch((err) => {
-					// commit(AUTH_ERROR, err);
-					// // nếu có lỗi, xóa hết token đang có trên trình duyệt
-					// localStorage.removeItem("user-token");
-					// reject(err);
+					commit(AUTH_ERROR, err);
+					localStorage.removeItem("user-token");
+					reject(err);
 				});
 		});
 	},
-	// [AUTH_REQUEST]: () => {
-	// 	console.log('ok ddc ne');
-	// },
 	[AUTH_LOGOUT]: ({ commit, dispatch }) => {
+
 		return new Promise((resolve, reject) => {
+
 			commit(AUTH_LOGOUT);
+
 			localStorage.removeItem("user-token");
+
 			delete axios.defaults.headers.common["Authorization"];
+
 			resolve();
 		});
 	},

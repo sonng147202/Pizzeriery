@@ -12,6 +12,7 @@ Route::get('', function () {
 
 Route::post('/auth/login', [AuthController::class, 'login']);
 Route::post('/auth/register', [AuthController::class, 'register']);
+Route::post('/auth/me', [AuthController::class, 'get_profile']);
 
 Route::get('/get_products', [ProductController::class, 'get_products']);
 Route::get('/get_price_scale', [ProductController::class, 'get_price_scale']);
