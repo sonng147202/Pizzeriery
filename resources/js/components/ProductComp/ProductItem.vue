@@ -32,15 +32,27 @@
                     <span class="price">120.000</span>
                 </div>
             </div>
-            <form ref="orderForm">
+            <form @submit.prevent="submitOrder">
                 <div class="pizza__option mb-2">
                     <div class="d-flex flex-wrap justify-content-between align-items-center">
                         <input type="hidden" name="name_product" :value="nameProduct">
-                        <ChooseSize  v-if="extraProduct" :priceScale="dataPriceScale" />
-                        <QuantityOrder />
+                        <div v-if="extraProduct" class="pizza__choose-size d-flex my-2 mx-auto">
+                            <div class="" v-for="(scale) in dataPriceScale" :key="scale.ps_id">
+                                <input type="radio" v-model="scaleProduct" :id="scale.ps_name + scale.prodc_id" :value="{scaleId: scale.ps_id, scaleName: scale.ps_name, scaleExtra: parseInt(scale.ps_extra)}">
+
+                                <label :for="scale.ps_name + scale.prodc_id">
+                                    <span>{{scale.ps_name}}</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="pizza__quantity d-flex justify-content-center my-2 mx-auto">
+                            <button class="btn-quantity" type="button" @click="minusQuantity">-</button>
+                            <input type="number" min="0" max="100" v-model="quantity" name="quantity">
+                            <button class="btn-quantity" type="button" @click="plusQuantity">+</button>
+                        </div>
                     </div>
                 </div>
-                <button class="pizza__btn-submit p-2 mb-2" type="submit" @click.prevent="submitOrder($event, $refs.orderForm)">Mua hàng</button>
+                <button class="pizza__btn-submit p-2 mb-2" type="submit">Mua hàng</button>
             </form>
 
         </div>
@@ -50,61 +62,75 @@
 
 <script>
 import axios from 'axios';
+import { mapActions } from 'vuex';
 import Notify from 'simple-notify'
-import ChooseSize from './ChooseSize.vue';
-import QuantityOrder from './QuantityOrder.vue';
 
 export default {
     created() {
         axios.get(`/get_price_scale?id=${this.idProduct}`)
-        .then(response => {
-            this.dataPriceScale = response.data;
-        })
-        .catch(e => {
-            console.error(e);
-        })
-    },
-    components: {
-        ChooseSize,
-        QuantityOrder,
+            .then(response => {
+                this.dataPriceScale = response.data;
+            })
+            .catch(e => {
+                console.error(e);
+            })
     },
     data() {
         return {
+
             dataPriceScale: [],
+            scaleProduct: null,
+            quantity: 0,
         }
     },
     props: {
         idProduct: Number,
         imgProduct: String,
         nameProduct: String,
-        priceProduct: String,
+        priceProduct: Number,
         extraProduct: Number,
     },
     methods: {
-        submitOrder: async (event, orderForm) => {
-            const orderFormData = new FormData(orderForm);
+        ...mapActions(['ADD_ITEM']),
+        minusQuantity() {
+            this.quantity--
+            if (this.quantity < 0) {
+                this.quantity = 0
+            }
+        },
+        plusQuantity() {
+            this.quantity++
+            if (this.quantity > 100) {
+                this.quantity = 100
+            }
+        },
+        submitOrder() {
+            const _this = this;
 
-            try {
-				const response = await axios({
-					method: "post",
-					url: "/order_product",
-					data: orderFormData,
-					headers: { "Content-Type": "multipart/form-data" },
-				});
+            const {...scale} = this.scaleProduct;
 
-                console.log(response);
+            const productOder = {
+                id: _this.idProduct,
+                name: _this.nameProduct,
+                price: _this.priceProduct,
+                scale
+            }
 
-                new Notify({
-                    status: 'success',
-                    title: 'Add to cart',
-                    text: `${response.data.name_product}`,
-                    autoclose: true,
-                })
-			} catch(error) {
-				console.error(error)
-			}
+            this.$store.dispatch('ADD_ITEM', productOder);
+
+            // console.log(productOder);
+
             
+            // new Notify({
+            //     status: 'success',
+            //     title: 'Add to cart',
+            //     text: `${response.data.name_product}`,
+            //     autoclose: true,
+            // })
         }
+    },
+    beforeUpdate() {
+        
     }
 }
 </script>

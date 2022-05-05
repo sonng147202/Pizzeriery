@@ -13,9 +13,9 @@
 
     <div class="content">
         <div class="ps-3">
-            <h1>Lorem ipsum</h1>
+            <h1>{{name}}</h1>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, numquam quis perspiciatis ea ad omnis provident laborum dolore in atque.
+                <!-- {{description}} -->
             </p>
             <div class="close">
                 <i class='bx bx-x'></i>
@@ -23,7 +23,7 @@
         </div>
 
         <h2 class="size">
-            XXL
+            {{size}}
         </h2>
 
         <h2 class="full-price">
@@ -39,10 +39,16 @@
 
 <script>
 export default {
+    props: {
+        name: String,
+        quantity: Number,
+        price: Number,
+        size: String,
+        // description: String,
+    },
     data() {
         return {
-            quantity: 1,
-            price: 1000,
+            
         }
     },
     computed: {

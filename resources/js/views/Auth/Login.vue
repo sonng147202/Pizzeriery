@@ -1,5 +1,5 @@
 <template>
-<form method="post" @submit.prevent="AUTH_REQUEST(formData)">
+<form method="post" @submit.prevent="login(AUTH_REQUEST(formData))">
     <div class="mb-3">
         <label for="txtEmail" class="form-label">Email address</label>
         <input type="text" class="form-control" id="txtEmail" v-model="formData.email">
@@ -24,7 +24,10 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['AUTH_REQUEST'])
+        ...mapActions(['AUTH_REQUEST']),
+        login (func) {
+            func.then(() => this.$router.push({ name: 'Home' }));
+        }
     }
 }
 </script>

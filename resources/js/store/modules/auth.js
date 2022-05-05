@@ -1,4 +1,3 @@
-import VueRouter from "vue-router";
 import axios from "axios";
 
 import {
@@ -45,8 +44,6 @@ const actions = {
 					commit(AUTH_SUCCESS, resp);
 
 					dispatch(USER_REQUEST);
-
-					VueRouter.push({ name: 'Home' });
 
 					resolve(resp);
 				})

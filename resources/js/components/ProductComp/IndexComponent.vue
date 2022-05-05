@@ -42,6 +42,7 @@
                     :idProduct="parseInt(product.prodc_id)"
                     :imgProduct="product.prodc_img" 
                     :nameProduct="product.prodc_title" 
+                    :priceProduct="parseInt(product.prodc_price)"
                     :extraProduct="parseInt(product.prodc_extra)"
                 />
             </div>

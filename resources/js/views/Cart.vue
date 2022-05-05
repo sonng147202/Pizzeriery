@@ -5,8 +5,17 @@
     </div>
     <div class="row">
         <div id="cart" class="col d-flex flex-column">
-            <CartItem />
-            <CartItem />
+            <div class="col" >
+                <CartItem 
+                    v-for="(itemCart, index) in StoreCart" 
+                    v-bind:key="index"
+                    :name="itemCart.name"
+                    :quantity="itemCart.quantity"
+                    :price="itemCart.price"
+                    :size="itemCart.size"
+                    :description="itemCart.description"
+                />
+            </div>
         </div>
     </div>
     <div class="row">
@@ -23,10 +32,18 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
 import CartItem from '../components/CartComp/CartItem.vue';
 export default {
+    created() {
+        console.log(StoreCart);
+    },
     components: {
         CartItem,
+    }, 
+    methods: {
+        ...mapGetters(['StoreCart']),
+        ...mapActions([])
     }
 }
 </script>
