@@ -5,7 +5,22 @@ import Products from "../views/Products.vue";
 import Cart from "../views/Cart.vue";
 import Login from "../views/Auth/Login.vue";
 import Register from "../views/Auth/Register.vue";
-import { ifNotAuthenticated, ifAuthenticated } from "../helper/routingAuth";
+
+const ifNotAuthenticated = (to, from, next) => {
+    if (!store.getters.isAuthenticated) {
+        next();
+        return;
+    }
+    next("/");
+};
+
+const ifAuthenticated = (to, from, next) => {
+    if (store.getters.isAuthenticated) {
+        next();
+        return;
+    }
+    next("/login");
+};
 
 export const routes = [
     {

@@ -9,16 +9,16 @@
                     class="nav-link d-flex justify-content-center flex-column" 
                     data-bs-toggle="tab" role="tab" aria-selected="true" 
                     v-for="(cat, index) in dataCats" 
-                    :key="cat.cat_id" 
+                    :key="cat.id" 
                     :class="{ 'active': index == 0 }" 
-                    :data-bs-target="'#cat' + cat.cat_id" 
-                    :aria-controls="'cat' + cat.cat_id"
+                    :data-bs-target="'#cat' + cat.id" 
+                    :aria-controls="'cat' + cat.id"
                 >
                     <!-- icon tab -->
-                    <img :src="cat.cat_img" class="nav-imgs m-0 m-auto" alt="" />
+                    <img :src="cat.img" class="nav-imgs m-0 m-auto" alt="" />
                     <!-- name tab -->
                     <span class="name">
-                        {{ cat.cat_name }}
+                        {{ cat.name }}
                     </span>
                 </button>
             </div>
@@ -38,12 +38,12 @@
             <div class="tab row align-items-stretch">
                 <ProductItem 
                     v-for="product in cat_products" 
-                    :key="product.prodc_id" 
-                    :idProduct="parseInt(product.prodc_id)"
-                    :imgProduct="product.prodc_img" 
-                    :nameProduct="product.prodc_title" 
-                    :priceProduct="parseInt(product.prodc_price)"
-                    :extraProduct="parseInt(product.prodc_extra)"
+                    :key="product.id" 
+                    :idProduct="parseInt(product.id)"
+                    :imgProduct="product.img" 
+                    :nameProduct="product.title" 
+                    :priceProduct="parseInt(product.price)"
+                    :extraProduct="parseInt(product.scale)"
                 />
             </div>
         </div>

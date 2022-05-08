@@ -60,8 +60,8 @@
             </li> -->
             <li><router-link tag="a" :to="{name: 'Products'}">Products</router-link></li>
             <li><router-link tag="a" :to="{name: 'Cart'}">Cart</router-link></li>
-            <li><router-link tag="a" :to="{name: 'Login'}">Login</router-link></li>
-            <li><router-link tag="a" :to="{name: 'Register'}">Register</router-link></li>
+            <li v-if="!isAuthenticated"><router-link tag="a" :to="{name: 'Login'}">Login</router-link></li>
+            <li v-if="!isAuthenticated"><router-link tag="a" :to="{name: 'Register'}">Register</router-link></li>
             <li v-if="isAuthenticated"><a href="#" @click="logout(AUTH_LOGOUT)">Logout</a></li>
         </ul>
         <label for="menu-btn" class="navbar-btn menu-btn">
@@ -73,8 +73,6 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-// import { isAuthenticated, isNotAuthenticated } from "../helper/checkAuth";
-
 import imgBannerMenu from '../../img/banner-meta-menu.jpg';
 export default {
     data() {
@@ -83,16 +81,15 @@ export default {
         }
     },
     computed: {
-        // isAuthenticated() {
-        //     return isAuthenticated
-        // }
+        ...mapGetters(['isAuthenticated']),
     },
     methods: {
-        ...mapGetters(['isAuthenticated']),
         ...mapActions(['AUTH_LOGOUT']),
         logout (func) {
             func().then(() => this.$router.push({ name: 'Home' }));
         }
+    },
+    created(){
     },
     beforeUpdate(){
         console.log(this.isAuthenticated);

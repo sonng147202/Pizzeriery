@@ -7,13 +7,14 @@
         <div id="cart" class="col d-flex flex-column">
             <div class="col" >
                 <CartItem 
-                    v-for="(itemCart, index) in StoreCart" 
+                    v-for="(item, index) in StoreCart" 
                     v-bind:key="index"
-                    :name="itemCart.name"
-                    :quantity="itemCart.quantity"
-                    :price="itemCart.price"
-                    :size="itemCart.size"
-                    :description="itemCart.description"
+                    :index="index"
+                    :name="item.name"
+                    :quantity="item.quantity"
+                    :price="item.price"
+                    :size="item.size"
+                    :description="item.description"
                 />
             </div>
         </div>
@@ -26,7 +27,7 @@
                 <span>99999đ</span>
             </div>
         </div>
-        <button class="btn btn-danger w-25 ms-auto">Submit</button>
+        <button class="btn btn-danger w-25 ms-auto" @click="log">Submit</button>
     </div>
 </div>
 </template>
@@ -35,16 +36,18 @@
 import { mapGetters, mapActions } from 'vuex';
 import CartItem from '../components/CartComp/CartItem.vue';
 export default {
-    created() {
-        console.log(StoreCart);
-    },
     components: {
         CartItem,
     }, 
-    methods: {
+    computed:{
         ...mapGetters(['StoreCart']),
-        ...mapActions([])
-    }
+    },
+    methods: {
+        ...mapActions([]),
+        log(){
+            console.log(this.StoreCart);
+        }
+    },
 }
 </script>
 

@@ -8,7 +8,7 @@ class ProductController
     {
         $data['cats'] = ProductModel::fetch_cats();
         foreach ($data['cats'] as $value) {
-            $data['products'][$value['cat_id']] = ProductModel::fetch_cat_products($value['cat_id']);
+            $data['products'][$value['id']] = ProductModel::fetch_cat_products($value['id']);
         }
         echo json_encode($data);
     }
