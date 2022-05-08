@@ -1,4 +1,4 @@
-<template>
+<template></template>
 <div class="product mb-3 d-flex">
     <div class="content d-flex flex-column justify-content-between w-25 h-100">
         <div class="">
@@ -17,7 +17,7 @@
             <p>
                 <!-- {{description}} -->
             </p>
-            <div class="close">
+            <div class="close" @click="REMOVE_ITEM(index)">
                 <i class='bx bx-x'></i>
             </div>
         </div>
@@ -38,8 +38,11 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
     props: {
+        index: Number,
         name: String,
         quantity: Number,
         price: Number,
@@ -56,10 +59,14 @@ export default {
             return this.price * this.quantity;
         }
     },
+    methods: {
+        ...mapActions(['REMOVE_ITEM', 'UPDATE_ITEM'])
+    },
     beforeUpdate() {
         if(this.quantity < 1) {
             this.quantity = 1;
         }
+        this.UPDATE_ITEM(this.index, this.quantity);
     },
 }
 </script>
