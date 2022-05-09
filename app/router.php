@@ -1,6 +1,5 @@
 <?php
 // Controllers
-Controller('Index');
 Controller('Auth');
 Controller('Product');
 

@@ -10,11 +10,7 @@
                     v-for="(item, index) in StoreCart" 
                     v-bind:key="index"
                     :index="index"
-                    :name="item.name"
-                    :quantity="item.quantity"
-                    :price="item.price"
-                    :size="item.size"
-                    :description="item.description"
+                    :id="item.id"
                 />
             </div>
         </div>
